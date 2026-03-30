@@ -17,12 +17,21 @@ Clone the repository:
 git clone https://github.com/Oscilllate/OscJS.git
 cd OscJS
 ```
-Include `osc.js` in your project:
+
+## Include the script (non-module)
 ```html
-<script src="./javascript/osc.js"></script>
+<script src="./javascript/script/osc.js"></script>
+```
+
+## Or use the module version
+```html
+<script type="module">
+  import Osc from "./javascript/module/osc.js";
+</script>
 ```
 
 ## Contributing
+
 Fork the repo, create a branch, and submit a pull request.
 
 ## License

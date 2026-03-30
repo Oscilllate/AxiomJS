@@ -122,6 +122,7 @@ function PTT(forKind = Object, methodName, method, { getter = false } = {}) {
   else proto[methodName] = method;
 }
 PTT(Object, "PTT", function(methodName, method, options) { PTT(this, methodName, method, options); });
+PTT(Element, "PTT", function(methodName, method, options) { PTT(this, methodName, method, options); });
 function waitFor(conditionFn, { interval = 100, timeout = 5000 } = {}) {
     return new Promise ((resolve, reject) => {
         const startTime = Date.now();
@@ -334,3 +335,4 @@ Array.PTT("flatten", function(depth = 1) {
     }
     return result;
 });
+
