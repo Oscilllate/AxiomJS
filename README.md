@@ -20,13 +20,13 @@ cd OscJS
 
 ## Include the script (non-module)
 ```html
-<script src="./javascript/script/osc.js"></script>
+<script src="./project/script/osc.js"></script>
 ```
 
 ## Or use the module version
 ```html
 <script type="module">
-  import Osc from "./javascript/module/osc.js";
+  import Osc from "./project/module/osc.module.js";
 </script>
 ```
 
