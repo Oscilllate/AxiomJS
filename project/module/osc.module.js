@@ -335,3 +335,64 @@ Array.PTT("flatten", function(depth = 1) {
     }
     return result;
 });
+
+// ===== URL Helpers =====
+export function parseURLToJSON(url) {
+	try {
+		const urlObj = new URL(url);
+
+		const result = {
+			origin: urlObj.origin,
+			href: urlObj.href,
+			hostname: urlObj.hostname,
+			protocol: urlObj.protocol,
+			pathname: urlObj.pathname,
+			search: urlObj.search,
+			hash: urlObj.hash
+		};
+
+		return result;
+	} catch (error) {
+		console.error("Invalid URL:", error);
+		return null;
+	}
+}
+export function buildURLFromJSON({
+	protocol = "http:",
+	hostname = "",
+	pathname = "",
+	search = "",
+	hash = ""
+}) {
+	if (!hostname) throw new Error("Hostname is required to build a URL");
+
+	if (pathname && !pathname.startsWith("/")) {
+		pathname = "/" + pathname;
+	}
+
+	if (search && !search.startsWith("?")) {
+		search = "?" + search;
+	}
+
+	if (hash && !hash.startsWith("#")) {
+		hash = "#" + hash;
+	}
+
+	return `${protocol}//${hostname}${pathname}${search}${hash}`;
+}
+export function parseURLPart(url, part) {
+	try {
+		const urlObj = new URL(url);
+
+		const validParts = ["href", "protocol", "hostname", "pathname", "search", "hash", "origin"];
+
+		if (!validParts.includes(part)) {
+			throw new Error(`Invalid part: ${part}`);
+		}
+
+		return urlObj[part];
+	} catch (error) {
+		console.error("Invalid URL:", error);
+		return null;
+	}
+}
